@@ -1,6 +1,6 @@
-INSERT INTO User (id, name, last_name) VALUES
-    (1,'Marek', 'Wojnar'),
-    (2,'Michał', 'Dolas');
+INSERT INTO User (id, name, last_name, password) VALUES
+    (1,'Marek', 'Wojnar', 'abc'),
+    (2,'Michał', 'Dolas', 'bsa');
 
 
 INSERT INTO Plant (id, description, name, user_id) VALUES
