@@ -4,10 +4,7 @@ import com.example.demo.entity.Plant;
 import com.example.demo.repository.PlantRepository;
 import com.example.demo.service.PlantService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,6 +29,10 @@ public class PlantController {
     @GetMapping("/plant-by-owner-id/{id}")
     public List<Plant> getPlantsByOwnerId(@PathVariable(name = "id") int ownerId) {
         return plantService.getAllOwnerPlants(ownerId);
+    }
+    @PutMapping("/water-plant/{plantId}")
+    public void waterPlant(@PathVariable(name = "plantId") int plantId) {
+       plantService.waterSelectedPlant(plantId);
     }
 
 }
