@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -22,7 +23,8 @@ public class Plant {
     private String name;
     @Column
     private String description;
-
+    @Column
+    private LocalDate lastWatered;
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
