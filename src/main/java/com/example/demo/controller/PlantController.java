@@ -28,4 +28,9 @@ public class PlantController {
         Optional<Plant> selectedPlant = plantRepository.findById(plantId);
         return selectedPlant.orElse(null);
     }
+
+    @GetMapping("/plant-by-owner-id/{id}")
+    public List<Plant> getPlantsByOwnerId(@PathVariable(name = "id") int ownerId) {
+        return plantRepository.getPlantsByOwner(ownerId);
+    }
 }
