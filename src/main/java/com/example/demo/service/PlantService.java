@@ -5,6 +5,7 @@ import com.example.demo.repository.PlantRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -24,6 +25,13 @@ public class PlantService {
         Optional<Plant> selectedPlant = plantRepository.findById(plantId);
         return selectedPlant.orElse(null);
     }
+
+    public void addNewPlant(@RequestBody Plant plant) {
+        plantRepository.save(plant);
+    }
+
+
+
     public List<Plant> getAllOwnerPlants(int ownerId) {
         return plantRepository.getPlantsByOwner(ownerId);
     }

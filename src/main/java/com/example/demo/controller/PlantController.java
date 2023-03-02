@@ -30,6 +30,12 @@ public class PlantController {
     public List<Plant> getPlantsByOwnerId(@PathVariable(name = "id") int ownerId) {
         return plantService.getAllOwnerPlants(ownerId);
     }
+
+    @PostMapping("/add")
+    public void addPlant(@RequestBody Plant plant) {
+        plantService.addNewPlant(plant);
+    }
+
     @PutMapping("/water-plant/{plantId}")
     public void waterPlant(@PathVariable(name = "plantId") int plantId) {
        plantService.waterSelectedPlant(plantId);
