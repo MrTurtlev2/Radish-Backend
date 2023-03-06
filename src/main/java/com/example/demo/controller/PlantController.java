@@ -36,8 +36,12 @@ public class PlantController {
         plantService.addNewPlant(plant);
     }
 
+//    @PutMapping("/assign/{plantId}") {
+//
+//    }
+
     @PutMapping("/water-plant/{plantId}")
-    public void waterPlant(@PathVariable(name = "plantId") int plantId) {
+    public void waterPlant(@PathVariable(name = "plantId") int plantId) throws Exception {
        plantService.waterSelectedPlant(plantId);
     }
 

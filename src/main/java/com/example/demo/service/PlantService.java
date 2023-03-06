@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.persistence.EntityNotFoundException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -35,10 +36,15 @@ public class PlantService {
     public List<Plant> getAllOwnerPlants(int ownerId) {
         return plantRepository.getPlantsByOwner(ownerId);
     }
-    public void waterSelectedPlant (int plantId) {
+
+    public void waterSelectedPlant (int plantId) throws Exception {
         LocalDate localDate = LocalDate.now();
-        Plant selectedPlant = plantRepository.findById(plantId).get();
-            selectedPlant.setLastWatered(localDate);
-            plantRepository.save(selectedPlant);
+        Optional<Plant> selectedPlant = plantRepository.findById(plantId);
+                if(selectedPlant.isPresent()) {
+                    Plant plantToWater = selectedPlant.get();
+                    plantToWater.setLastWatered(localDate);
+                    plantRepository.save(plantToWater);
+                }
+        throw new EntityNotFoundException();
     }
 }
