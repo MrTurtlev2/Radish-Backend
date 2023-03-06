@@ -37,13 +37,14 @@ public class PlantService {
         return plantRepository.getPlantsByOwner(ownerId);
     }
 
-    public void waterSelectedPlant (int plantId) throws Exception {
+    public void waterSelectedPlant (int plantId) {
         LocalDate localDate = LocalDate.now();
         Optional<Plant> selectedPlant = plantRepository.findById(plantId);
                 if(selectedPlant.isPresent()) {
                     Plant plantToWater = selectedPlant.get();
                     plantToWater.setLastWatered(localDate);
                     plantRepository.save(plantToWater);
+                    return;
                 }
         throw new EntityNotFoundException();
     }
