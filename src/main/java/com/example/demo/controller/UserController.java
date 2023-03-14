@@ -28,4 +28,11 @@ public class UserController {
     public PrincipalDto logIn(@RequestBody UserCredentialsDto userCredentialsDto) {
         return userService.logIn(userCredentialsDto);
     }
+
+    @PostMapping(value = "/register")
+    public PrincipalDto registerUser(@RequestBody UserCredentialsDto userCredentialsDto) {
+        return null;
+//        return userService.logIn(userCredentialsDto);
+    }
+
 }
