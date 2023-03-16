@@ -1,6 +1,6 @@
 INSERT INTO User (id,email, password, name, last_name) VALUES
-    (1, 'm.wojnar@onet.pl', '$2akkk', 'Marek', 'Wojnar'),
-    (2, 'michald@ont.pl', '$2appp', 'Michał', 'Dolas');
+    (1, 'm.wojnar@onet.pl', '$2a$12$m7fwXE0fhOxy4IBjovBMTew/RtVY0.eQCTr94CT.vFmBQgT.f27vC', 'Marek', 'Wojnar'),
+    (2, 'michald@ont.pl', '$2a$12$39wKHsMQcXHAv61aViwYhe4FtQVXSimnV4cDAjXXdumR16hoMv6Ou', 'Michał', 'Dolas');
 
 
 INSERT INTO Plant (id, description, name, user_id) VALUES
