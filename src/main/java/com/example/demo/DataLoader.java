@@ -25,8 +25,8 @@ public class DataLoader implements ApplicationRunner {
 
         List<RoleUtil> roleUtils = new ArrayList<>();
         roleUtils.add(RoleUtil.ROLE_USER);
-        roleUtils.add(RoleUtil.ROLE_COURIER);
-        roleUtils.add(RoleUtil.ROLE_DEPOSIT_COLLECTOR);
+        roleUtils.add(RoleUtil.ROLE_ADMIN);
+        roleUtils.add(RoleUtil.ROLE_GUEST);
 
         roleUtils.forEach(roleUtil -> {
             RoleEntity byName = roleRepository.findByName(roleUtil);
