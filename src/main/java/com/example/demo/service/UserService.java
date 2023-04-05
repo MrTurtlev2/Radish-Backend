@@ -72,4 +72,13 @@ public class UserService {
                 .roles(roles)
                 .build();
     }
+
+
+    public User getUserFromSessionStorage() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        return userRepository.findByEmail(userDetails.getUsername()).orElse(null);
+    }
+
+
 }

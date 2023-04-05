@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Plant;
+import com.example.demo.entity.User;
 import com.example.demo.repository.PlantRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class PlantService {
     @Autowired
     private PlantRepository plantRepository;
 
+    @Autowired
+    private UserService userService;
+
     public List<Plant> findAllPlants() {
        return plantRepository.findAll();
     }
@@ -28,12 +32,15 @@ public class PlantService {
     }
 
     public void addNewPlant(@RequestBody Plant plant) {
+        User user = userService.getUserFromSessionStorage();
+        Plant plantToSave = new Plant();
+        plantToSave.setUser(user);
         plantRepository.save(plant);
     }
 
 
 
-    public List<Plant> getAllOwnerPlants(int ownerId) {
+    public List<Plant> getAllOwnerPlants(long ownerId) {
         return plantRepository.getPlantsByOwner(ownerId);
     }
 

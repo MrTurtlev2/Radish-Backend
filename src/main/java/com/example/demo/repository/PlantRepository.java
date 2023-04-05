@@ -10,7 +10,7 @@ import java.util.List;
 public interface PlantRepository extends JpaRepository<Plant, Integer> {
 
     @Query(value = "select o from Plant o where o.user.id= :id")
-    public List<Plant> getPlantsByOwner(@Param("id") int id);
+    public List<Plant> getPlantsByOwner(@Param("id") long id);
 
 //    @Query(value = "select o from Plant o where o.user.id= :ownerId and plant.id= :plantId")
 //    public Plant getPlantToWater(@Param("ownerId") int ownerId, @Param("plantId") int plantId);
