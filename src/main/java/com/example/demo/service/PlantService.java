@@ -45,7 +45,11 @@ public class PlantService {
 
     public List<Plant> getAllOwnerPlants() {
         User user = userService.getUserFromSessionStorage();
-        return userRepository.findByEmail(user.getEmail()).get().getPlants();
+        Optional<User> userByEmail = userRepository.findByEmail(user.getEmail());
+         if (userByEmail.isPresent()){
+             return userByEmail.get().getPlants();
+         }
+        throw new EntityNotFoundException();
     }
 
     public void waterSelectedPlant (int plantId) {

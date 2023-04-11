@@ -26,8 +26,8 @@ public class PlantController {
         return plantService.findPlantById(plantId);
     }
 
-    @GetMapping("/plant-by-owner-id/{id}")
-    public List<Plant> getPlantsByOwnerId(@PathVariable(name = "id") int ownerId) {
+    @GetMapping("/plant-by-owner")
+    public List<Plant> getPlantsByOwnerId() {
         return plantService.getAllOwnerPlants();
     }
 
