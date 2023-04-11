@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -81,4 +82,8 @@ public class UserService {
     }
 
 
+    public void deleteUserAccount() {
+        User user = getUserFromSessionStorage();
+        userRepository.deleteById(user.getId());
+    };
 }

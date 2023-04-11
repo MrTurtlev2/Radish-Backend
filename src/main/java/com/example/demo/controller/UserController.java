@@ -35,4 +35,9 @@ public class UserController {
 //        return userService.logIn(userCredentialsDto);
     }
 
+    @DeleteMapping(value = "/delete")
+    public void deleteUserAccount() {
+        userService.deleteUserAccount();
+    }
+
 }
