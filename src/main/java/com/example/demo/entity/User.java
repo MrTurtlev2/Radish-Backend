@@ -32,7 +32,7 @@ public class User {
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private List<Plant> list;
+    private List<Plant> plants;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles_entity",

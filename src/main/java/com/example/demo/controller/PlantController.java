@@ -28,17 +28,13 @@ public class PlantController {
 
     @GetMapping("/plant-by-owner-id/{id}")
     public List<Plant> getPlantsByOwnerId(@PathVariable(name = "id") int ownerId) {
-        return plantService.getAllOwnerPlants(ownerId);
+        return plantService.getAllOwnerPlants();
     }
 
     @PostMapping("/add")
     public void addPlant(@RequestBody Plant plant) {
         plantService.addNewPlant(plant);
     }
-
-//    @PutMapping("/assign/{plantId}") {
-//
-//    }
 
     @PutMapping("/water-plant/{plantId}")
     public void waterPlant(@PathVariable(name = "plantId") int plantId) throws Exception {
