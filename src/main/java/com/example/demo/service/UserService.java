@@ -15,6 +15,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.security.Principal;
 import java.util.List;
@@ -86,4 +87,10 @@ public class UserService {
         User user = getUserFromSessionStorage();
         userRepository.deleteById(user.getId());
     };
+
+    public void updateEmail(String email) {
+        User user = getUserFromSessionStorage();
+        user.setEmail(email);
+        userRepository.save(user);
+    }
 }
