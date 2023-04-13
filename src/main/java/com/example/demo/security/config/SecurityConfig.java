@@ -19,9 +19,6 @@ import org.springframework.web.filter.CommonsRequestLoggingFilter;
 
 @Configuration
 @EnableWebSecurity
-//@EnableGlobalMethodSecurity(
-//		prePostEnabled = true
-//)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private final UserDetailsServiceImpl userDetailsServiceImpl;
@@ -55,12 +52,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		http.headers().frameOptions().sameOrigin();
 		http.csrf().disable()
 				.exceptionHandling().authenticationEntryPoint(authEntryPointJwt).and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 				.authorizeRequests()
 				.antMatchers( "/api/user/userLogin", "/api/user/register", "/h2-console/**").permitAll()
-//				.antMatchers("/**").permitAll()
 				.anyRequest().authenticated()
 				.and()
 				.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
