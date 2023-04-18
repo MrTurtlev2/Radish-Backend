@@ -63,4 +63,7 @@ public class PlantService {
                 }
         throw new EntityNotFoundException();
     }
+
+    public void updatePlant() {
+    }
 }

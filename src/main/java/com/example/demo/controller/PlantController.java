@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.PlantDataDto;
 import com.example.demo.entity.Plant;
 import com.example.demo.repository.PlantRepository;
 import com.example.demo.service.PlantService;
@@ -39,6 +40,11 @@ public class PlantController {
     @PutMapping("/water-plant/{plantId}")
     public void waterPlant(@PathVariable(name = "plantId") int plantId) throws Exception {
        plantService.waterSelectedPlant(plantId);
+    }
+
+    @PutMapping("/update-plant/{plantId}")
+    public void updatePlant(@PathVariable(name = "plantId") int plantId, @RequestBody PlantDataDto plantDataDto) {
+        plantService.updatePlant();
     }
 
 }

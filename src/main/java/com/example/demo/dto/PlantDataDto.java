@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PlantDTO {
+public class PlantDataDto {
     private int id;
     private String name;
     private String description;
